@@ -3,9 +3,9 @@ from scripts.core.bounds import Bounds2D, Bounds3D
 
 
 class Collider2D(ComponentsBase):
-    def __init__(self, entity, system, bounds: Bounds2D):
+    def __init__(self, entity_name, bounds: Bounds2D):
         self.bounds = bounds 
-        super().__init__(entity=entity, system=system)
+        super().__init__(entity_name=entity_name)
 
     def __str__(self):
         return f"Collider2D: bounds={self.bounds}"
@@ -46,12 +46,16 @@ class Collider2D(ComponentsBase):
     
     def on_enable(self):
         return super().on_enable()
+    
+    @classmethod
+    def make_from_dict(cls, entity_name, component_dict):
+        return cls(entity_name, Bounds2D.from_min_max(*component_dict["min"], *component_dict["max"]))
 
 
 class Collider3D(ComponentsBase):
-    def __init__(self, entity, system, bounds: Bounds3D):
+    def __init__(self, entity_name, bounds: Bounds3D):
         self.bounds = bounds 
-        super().__init__(entity=entity, system=system)
+        super().__init__(entity_name=entity_name)
 
     def __str__(self):
         return f"Collider3D: bounds={self.bounds}"
@@ -92,3 +96,7 @@ class Collider3D(ComponentsBase):
     
     def on_enable(self):
         return super().on_enable()
+    
+    @classmethod
+    def make_from_dict(cls, entity_name, component_dict):
+        return cls(entity_name, Bounds3D.from_min_max(*component_dict["min"], *component_dict["max"]))

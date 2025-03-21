@@ -50,3 +50,13 @@ class Entity:
     def has_tag(self, tag: str) -> bool:
         return tag in self.tags
     
+    def make_entity(self, name: str, description: str, location: Vector3):
+        return Entity(name, description, location)
+    
+    def make_from_dict(self, entity_dict: dict):
+        entity = Entity(entity_dict["name"], entity_dict["description"], Vector3(*entity_dict["location"]))
+        for component_dict in entity_dict["components"]:
+            type_name = component_dict["type"]
+            component = ComponentsBase.make_from_dict(entity_dict["name"], component_dict)
+            entity.add_component(component)
+    

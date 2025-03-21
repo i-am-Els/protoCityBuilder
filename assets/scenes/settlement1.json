@@ -1,0 +1,110 @@
+{
+    "scene_name": "settlement1",
+    "entities": [
+        {
+            "name": "Player",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "player",
+                    "material": "player"
+                },
+                {
+                    "type": "Collider3D",
+                    "min": [-0.5, -0.5, -0.5],
+                    "max": [0.5, 0.5, 0.5]
+                }
+            ]
+        },
+        {
+            "name": "Ground",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "ground",
+                    "material": "ground"
+                },
+                {
+                    "type": "Collider3D",
+                    "min": [-5, -0.5, -5],
+                    "max": [5, 0.5, 5]
+                }
+            ]
+        },
+        {
+            "name": "House1",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "house1",
+                    "material": "house1"
+                },
+                {
+                    "type": "Collider3D",
+                    "min": [-1, -1, -1],
+                    "max": [1, 1, 1]
+                }
+            ]
+        },
+        {
+            "name": "House2",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "house2",
+                    "material": "house2"
+                },
+                {
+                    "type": "Collider3D",
+                    "min": [-1, -1, -1],
+                    "max": [1, 1, 1]
+                }
+            ]
+        },
+        {
+            "name": "House3",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "house3",
+                    "material": "house3"
+                },
+                {
+                    "type": "Collider3D",
+                    "min": [-1, -1, -1],
+                    "max": [1, 1, 1]
+                }
+            ]
+        }
+    ]
+}

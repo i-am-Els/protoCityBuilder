@@ -39,6 +39,11 @@ class Bounds2D:
     def one():
         return Bounds2D(1, 1, 1, 1)
     
+    @classmethod
+    def from_min_max(cls, min_x, min_y, max_x, max_y):
+        width = max_x - min_x
+        height = max_y - min_y
+        return cls(min_x, min_y, width, height)
 
 class Bounds3D:
     def __init__(self, x, y, z, width, height, depth):
@@ -82,5 +87,13 @@ class Bounds3D:
     @staticmethod
     def one():
         return Bounds3D(1, 1, 1, 1, 1, 1)
+    
+    @classmethod
+    def from_min_max(cls, min_x, min_y, min_z, max_x, max_y, max_z):
+        width = max_x - min_x
+        height = max_y - min_y
+        depth = max_z - min_z
+        return cls(min_x, min_y, min_z, width, height, depth)
+
     
     

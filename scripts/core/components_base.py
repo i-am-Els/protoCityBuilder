@@ -1,8 +1,10 @@
+from scripts.core.accessor import Accessor
+
+
 class ComponentsBase:
-    def __init__(self, entity, system, *args, **kwargs):
+    def __init__(self, entity_name, *args, **kwargs):
         self.tag = kwargs.get("tag", "")
-        self.entity = None
-        self.__system = system
+        self.entity: str = entity_name
 
     def __str__(self):
         return f"ComponentsBase: tag={self.tag}"
@@ -17,7 +19,8 @@ class ComponentsBase:
         pass
 
     def awake(self):
-        self.__system.add_component(self)
+        system = Accessor.get_accessor("Game").get_system(self.__class__)
+        system.add_component(self)
 
     def on_enable(self):
         pass
@@ -26,4 +29,9 @@ class ComponentsBase:
         pass
 
     def on_destroy(self):
-        self.__system.remove_component(self)
+        system = Accessor.get_accessor("Game").get_system(self.__class__)
+        system.remove_component(self)
+
+    @classmethod
+    def make_from_dict(cls, entity_name, component_dict: dict):
+        pass

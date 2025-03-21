@@ -1,10 +1,10 @@
 from scripts.core.components_base import ComponentsBase
 
 class MeshRenderer(ComponentsBase):
-    def __init__(self, entity, system, mesh, material):
+    def __init__(self, entity_name, mesh, material):
         self.mesh = mesh
         self.material = material
-        super().__init__(entity=entity, system=system)
+        super().__init__(entity_name=entity_name)
 
     def __str__(self):
         return f"MeshRenderer: mesh={self.mesh}, material={self.material}"
@@ -51,4 +51,8 @@ class MeshRenderer(ComponentsBase):
         return super().on_enable()
     
     def on_disable(self):
-        return super().on_disable()    
+        return super().on_disable()   
+
+    @classmethod
+    def make_from_dict(cls, entity_name, component_dict):
+        return cls(entity_name, component_dict["mesh"], component_dict["material"])
