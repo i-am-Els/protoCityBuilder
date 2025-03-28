@@ -6,6 +6,7 @@ class Scene:
     def __init__(self, name):
         self.name = name
         self.entities: Dict[str, Entity] = {}
+        print(f"Scene {self.name} loaded")
 
     def add_entity(self, entity):
         self.entities[entity.name] = entity

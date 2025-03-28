@@ -1,10 +1,10 @@
 from scripts.core.components_base import ComponentsBase
 
 class MeshRenderer(ComponentsBase):
-    def __init__(self, entity_name, mesh, material):
-        self.mesh = mesh
-        self.material = material
-        super().__init__(entity_name=entity_name)
+    def __init__(self, entity_name, mesh=None, material=None, **kwargs):
+        super().__init__(entity_name=entity_name, **kwargs)
+        self.mesh = mesh if mesh is not None else kwargs.get("mesh", None)
+        self.material = material if material is not None else kwargs.get("material", None)
 
     def __str__(self):
         return f"MeshRenderer: mesh={self.mesh}, material={self.material}"
@@ -36,23 +36,23 @@ class MeshRenderer(ComponentsBase):
     
     # Override ComponentsBase methods
     def start(self):
-        return super().start()
+        super().start()
     
     def update(self):
-        return super().update()
+        super().update()
     
     def awake(self):
-        return super().awake()
+        super().awake()
     
     def on_destroy(self):
-        return super().on_destroy()
+        super().on_destroy()
     
     def on_enable(self):
-        return super().on_enable()
+        super().on_enable()
     
     def on_disable(self):
-        return super().on_disable()   
+        super().on_disable()   
 
     @classmethod
     def make_from_dict(cls, entity_name, component_dict):
-        return cls(entity_name, component_dict["mesh"], component_dict["material"])
+        return cls(entity_name, **component_dict)

@@ -15,16 +15,16 @@ class Game:
     def _set_quit_callback(self, callback):
         self.callback = callback
 
-    def add_system(self, system: System):
-        for sys in self.systems.values:
+    def _add_system(self, system: System):
+        for sys in self.systems.values():
             if sys._component_type == system._component_type or sys.id == system.id:
                 return
         self.systems[system._component_type] = system
 
-    def get_systems(self):
+    def get_systems(self) -> Dict[Type[ComponentsBase], System]:
         return self.systems
     
-    def get_system(self, component_type: Type[ComponentsBase]):
+    def get_system(self, component_type: Type[ComponentsBase]) -> System:
         return self.systems.get(component_type, None)
 
     def add_scene(self, scene: Scene, make_current=False):

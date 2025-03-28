@@ -2,15 +2,29 @@ from typing import Type
 from scripts.core.components_base import ComponentsBase
 
 class System:
-    _component_type = None
+    # _component_type = None
     _is_enabled = True
-    def __init__(self, component_type):
+    def __init__(self, component_type, is_static: bool=False):
         self._component_type: Type[ComponentsBase] = component_type
-        self.components = []
-    
+        self.__components = []
+        self.__static = is_static
+        print(f"{self._component_type.__name__} System started")
+
     @property
     def id(self):
         return id(self)
+
+    @property
+    def static(self):
+        return self.__static
+    
+    @property
+    def components(self):
+        return self.__components
+    
+    @components.setter
+    def components(self, value):
+        return
 
     def add_component(self, component):
         if component not in self.components:
@@ -21,7 +35,7 @@ class System:
             self.components.remove(component)
 
     def update(self):
-        if not self._is_enabled:
+        if self.static or not self._is_enabled:
             return
         for component in self.components:
             component.update()
@@ -43,12 +57,12 @@ class System:
             component.on_destroy()
 
     def create_component(self, entity, *args, **kwargs):
-        component = self.make_component(entity, self, *args, **kwargs)
+        component = self._component_type(entity, *args, **kwargs)
         return component
 
-    @classmethod
-    def make_component(cls, entity, system, *args, **kwargs):
-        return cls._component_type(entity, system, *args, **kwargs)
+    @staticmethod
+    def make_component(component_type: Type[ComponentsBase], entity, *args, **kwargs):
+        return component_type(entity, *args, **kwargs)
 
     @classmethod
     def disable_system(cls):

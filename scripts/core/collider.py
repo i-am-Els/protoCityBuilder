@@ -3,10 +3,18 @@ from scripts.core.bounds import Bounds2D, Bounds3D
 
 
 class Collider2D(ComponentsBase):
-    def __init__(self, entity_name, bounds: Bounds2D):
-        self.bounds = bounds 
-        super().__init__(entity_name=entity_name)
-
+    def __init__(self, entity_name, bounds=None, **kwargs):
+        super().__init__(entity_name=entity_name, **kwargs)
+        if bounds:
+            self.bounds = bounds
+        else:
+            min_coords = kwargs.get("min")
+            max_coords = kwargs.get("max")
+            if min_coords and max_coords:
+                self.bounds = Bounds2D.from_min_max(*min_coords, *max_coords)
+            else:
+                raise ValueError("Either 'bounds' or 'min' and 'max' must be provided")
+            
     def __str__(self):
         return f"Collider2D: bounds={self.bounds}"
     
@@ -30,33 +38,41 @@ class Collider2D(ComponentsBase):
     
     # override ComponentsBase methods
     def start(self):
-        return super().start()
+        super().start()
     
     def update(self):
-        return super().update()
+        super().update()
     
     def awake(self):
-        return super().awake()
+        super().awake()
     
     def on_destroy(self):
-        return super().on_destroy()
+        super().on_destroy()
     
     def on_disable(self):
-        return super().on_disable()
+        super().on_disable()
     
     def on_enable(self):
-        return super().on_enable()
+        super().on_enable()
     
     @classmethod
     def make_from_dict(cls, entity_name, component_dict):
-        return cls(entity_name, Bounds2D.from_min_max(*component_dict["min"], *component_dict["max"]))
+        return cls(entity_name, **component_dict)
 
 
 class Collider3D(ComponentsBase):
-    def __init__(self, entity_name, bounds: Bounds3D):
-        self.bounds = bounds 
-        super().__init__(entity_name=entity_name)
-
+    def __init__(self, entity_name, bounds=None, **kwargs):
+        super().__init__(entity_name=entity_name, **kwargs)
+        if bounds:
+            self.bounds = bounds
+        else:
+            min_coords = kwargs.get("min")
+            max_coords = kwargs.get("max")
+            if min_coords and max_coords:
+                self.bounds = Bounds3D.from_min_max(*min_coords, *max_coords)
+            else:
+                raise ValueError("Either 'bounds' or 'min' and 'max' must be provided")
+            
     def __str__(self):
         return f"Collider3D: bounds={self.bounds}"
     
@@ -80,23 +96,23 @@ class Collider3D(ComponentsBase):
     
     # override ComponentsBase methods
     def start(self):
-        return super().start()
+        super().start()
     
     def awake(self):
-        return super().awake()
+        super().awake()
     
     def update(self, *args, **kwargs):
-        return super().update(*args, **kwargs)
+        super().update(*args, **kwargs)
     
     def on_destroy(self):
-        return super().on_destroy()
+        super().on_destroy()
     
     def on_disable(self):
-        return super().on_disable()
+        super().on_disable()
     
     def on_enable(self):
-        return super().on_enable()
+        super().on_enable()
     
     @classmethod
     def make_from_dict(cls, entity_name, component_dict):
-        return cls(entity_name, Bounds3D.from_min_max(*component_dict["min"], *component_dict["max"]))
+        return cls(entity_name, **component_dict)

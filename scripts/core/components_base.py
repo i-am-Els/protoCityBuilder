@@ -2,9 +2,10 @@ from scripts.core.accessor import Accessor
 
 
 class ComponentsBase:
-    def __init__(self, entity_name, *args, **kwargs):
+    def __init__(self, entity_name, **kwargs):
         self.tag = kwargs.get("tag", "")
         self.entity: str = entity_name
+        print(f"Component of type {self.__class__.__name__} belonging to {self.entity} initialized")
 
     def __str__(self):
         return f"ComponentsBase: tag={self.tag}"
@@ -12,23 +13,23 @@ class ComponentsBase:
     def __repr__(self):
         return f"ComponentsBase: tag={self.tag}"
     
-    def update(self, *args, **kwargs):
+    def update(self, **kwargs) -> None:
         pass
 
-    def start(self):
+    def start(self) -> None:
         pass
 
-    def awake(self):
+    def awake(self) -> None:
         system = Accessor.get_accessor("Game").get_system(self.__class__)
         system.add_component(self)
 
-    def on_enable(self):
+    def on_enable(self) -> None:
         pass
 
-    def on_disable(self):
+    def on_disable(self) -> None:
         pass
 
-    def on_destroy(self):
+    def on_destroy(self) -> None:
         system = Accessor.get_accessor("Game").get_system(self.__class__)
         system.remove_component(self)
 

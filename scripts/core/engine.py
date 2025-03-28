@@ -1,8 +1,9 @@
 import json
-from game import Game
+from typing import Dict, Type
+from scripts.core.components_base import ComponentsBase
+from scripts.core.game import Game
 from scripts.core.scene import Scene
 from scripts.core.systems import System
-from scripts.core.accessor import Accessor
 
 
 class Engine:
@@ -13,35 +14,33 @@ class Engine:
         self.set_current_scene(scene=self.game.get_scene(name="Main"))
         self.is_running = True
         self.game._set_quit_callback(self.quit)
-        Accessor.add_accessor(name="Engine", obj=self)
+        print("Engine started")
 
-    def add_systems(self, systems):
-        for system in systems:
-            self.game.add_system(system)
-
-    def add_systems_from_classes(self, component_classes):
-        for component_class in component_classes:
-            system = System(component_class)
-            self.game.add_system(system)
+    def add_systems_from_classes(self, component_classes: Dict[Type[ComponentsBase], bool]):
+        """
+        This function takes in a map of Component types and the is_static state the system controlling that class should have.
+        """
+        for component_class , is_static in component_classes.items():
+            system = System(component_class, is_static)
+            self.game._add_system(system)
 
     def run(self):
         self.awake()
         self.start()
         while self.is_running:
-            for system in self.game.get_systems():
-                system.update()
+            self.update()
         self.on_destroy()
 
     def awake(self):
-        for system in self.game.get_systems():
+        for system in self.game.get_systems().values():
             system.awake()
 
     def start(self):
-        for system in self.game.get_systems():
+        for system in self.game.get_systems().values():
             system.start()
 
     def on_destroy(self):
-        for system in self.game.get_systems():
+        for system in self.game.get_systems().values():
             system.on_destroy()
         self.is_running = False
         print(f"Engine {self.name} destroyed")
@@ -50,7 +49,11 @@ class Engine:
         self.is_running = False
 
     def update(self):
-        pass
+        for system in self.game.get_systems().values():
+            if system.static:
+                continue
+            system.update()
+            print(f"{system._component_type.__name__} system is updated")
 
     def add_scene(self, scene, make_current=False):
         self.game.add_scene(scene, make_current)
@@ -62,3 +65,4 @@ class Engine:
 
     def set_current_scene(self, scene):
         self.game.set_current_scene(scene)
+

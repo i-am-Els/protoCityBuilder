@@ -1,14 +1,14 @@
 from typing import List
-from scripts.core.native.vector3 import Vector3
 from scripts.core.components_base import ComponentsBase
+from scripts.core.component_registry import ComponentsRegistry
 
 class Entity:
-    def __init__(self, name: str, description: str, location: Vector3):
+    def __init__(self, name: str, description: str=None):
         self.name = name
         self.description = description
-        self.location: Vector3 = location
         self.components: List[ComponentsBase] = []
         self.tags: List[str] = []
+        print(f"Entity {self.name} started")
 
     def __str__(self):
         return f"{self.name} is {self.description} and is located at {self.location}"
@@ -50,13 +50,20 @@ class Entity:
     def has_tag(self, tag: str) -> bool:
         return tag in self.tags
     
-    def make_entity(self, name: str, description: str, location: Vector3):
-        return Entity(name, description, location)
+    def make_entity(self, name: str, description: str=None):
+        return Entity(name, description)
     
-    def make_from_dict(self, entity_dict: dict):
-        entity = Entity(entity_dict["name"], entity_dict["description"], Vector3(*entity_dict["location"]))
+    @classmethod
+    def make_from_dict(cls, entity_dict: dict):
+        entity = Entity(entity_dict["name"])
+        entity.description = entity_dict.get("description", None)
+        entity.tags = entity_dict.get("tags", [])
         for component_dict in entity_dict["components"]:
             type_name = component_dict["type"]
-            component = ComponentsBase.make_from_dict(entity_dict["name"], component_dict)
-            entity.add_component(component)
-    
+            component_class = ComponentsRegistry.component_registy().get(type_name, ComponentsBase)
+            if component_class:
+                component = component_class.make_from_dict(entity_dict["name"], component_dict)
+                entity.add_component(component)
+            else:
+                raise ValueError(f"Unknown component type: {type_name}")
+        return entity

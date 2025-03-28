@@ -5,11 +5,13 @@ from scripts.core.native.vector3 import Vector3
 
 
 class Transform2D(ComponentsBase):
-    def __init__(self, entity_name, position=Vector2.zero(), angle=0, scale=Vector2.one()):
-        self.position = position
-        self.angle = angle
-        self.scale = scale
-        super().__init__(entity_name=entity_name)
+    def __init__(self, entity_name, position=None, angle=None, scale=None, **kwargs):
+        super().__init__(entity_name=entity_name, **kwargs)
+
+        self.position = position if position is not None else kwargs.get("position", Vector2.zero())
+        self.angle = angle if angle is not None else kwargs.get("angle", 0)
+        self.scale = scale if scale is not None else kwargs.get("scale", Vector2.one())
+
 
     def __str__(self):
         return f"Transform2D: position={self.position}, angle={self.angle}, scale={self.scale}"
@@ -125,15 +127,15 @@ class Transform2D(ComponentsBase):
 
     @classmethod
     def make_from_dict(cls, entity_name, component_dict):
-        return cls(entity_name, Vector2(*component_dict["position"]), component_dict["angle"], Vector2(*component_dict["scale"]))
+        return cls(entity_name, **component_dict)
 
 
 class Transform3D(ComponentsBase):
-    def __init__(self, entity_name, position: Vector3, rotation: Vector3, scale: Vector3):
-        self.position = position
-        self.rotation = rotation
-        self.scale = scale
-        super().__init__(entity_name=entity_name)
+    def __init__(self, entity_name, position: Vector3=None, rotation: Vector3=None, scale: Vector3=None, **kwargs):
+        super().__init__(entity_name=entity_name, **kwargs)
+        self.position = position if position is not None else kwargs.get("position", Vector3.zero())
+        self.rotation = rotation if rotation is not None else kwargs.get("rotation", Vector3.zero())
+        self.scale = scale if scale is not None else kwargs.get("scale", Vector3.one())
 
     def __str__(self):
         return f"Transform3D: position={self.position}, rotation={self.rotation}, scale={self.scale}"
@@ -212,4 +214,4 @@ class Transform3D(ComponentsBase):
 
     @classmethod
     def make_from_dict(cls, entity_name, component_dict):
-        return cls(entity_name, Vector3(*component_dict["position"]), Vector3(*component_dict["rotation"]), Vector3(*component_dict["scale"]))
+        return cls(entity_name, **component_dict)
