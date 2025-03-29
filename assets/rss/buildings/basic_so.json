@@ -1,0 +1,25 @@
+{
+    "house": {
+        "cost": [0, 0, 1, 5, 0],
+        "description": "A dwelling place for the people of TextCraft. Provides shelter and increases population cap.",
+        "capacity": 5
+    },
+    "market": {
+        "cost": [0, 1, 1, 3, 0],
+        "description": " A central hub for resource exchange, allowing players to trade gathered materials for advanced goods.",
+        "inventory": {
+            "fish": 4,
+            "barley": 10,
+            "onions": 6,
+            "beef": 5
+        }
+    },
+    "workshop": {
+        "cost": [0, 0, 1, 5, 1],
+        "description": "A versatile building that can produce basic tools and upgrade units",
+        "upgrades": {
+            "house-capacity": [2, 2, 4, 6, 1],
+            "market-inventory": [3, 2, 1, 2, 2]
+        }
+    }
+}

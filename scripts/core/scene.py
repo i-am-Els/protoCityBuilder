@@ -12,7 +12,7 @@ class Scene:
         self.entities[entity.name] = entity
 
     def render(self):
-        print(f"Rendering scene {self.name}")
+        # print(f"Rendering scene {self.name}")
         for entity in self.entities.values():
             entity.render()
 

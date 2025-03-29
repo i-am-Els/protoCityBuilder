@@ -1,0 +1,278 @@
+{
+    "spawnables": [
+        {
+            "name": "House",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "house_default",
+                    "material": "house_default"
+                },
+                {
+                    "type": "Collider3D",
+                    "min": [-1, -1, -1],
+                    "max": [1, 1, 1]
+                }
+            ]
+        },
+        {
+            "name": "Timber Grove",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [10, 0, 20],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "trees",
+                    "material": "timber_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Wood",
+                    "gatherRate": 5,
+                    "maxAmount": 100,
+                    "respawnTime": 120
+                }
+            ]
+        },
+        {
+            "name": "Stone Quarry",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [25, 0, 40],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "rock_formation",
+                    "material": "stone_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Stone",
+                    "gatherRate": 3,
+                    "maxAmount": 80,
+                    "respawnTime": 180
+                }
+            ]
+        },
+        {
+            "name": "Fish Lake",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [50, 0, 75],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "lake",
+                    "material": "water_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 8,
+                    "maxAmount": 50,
+                    "respawnTime": 150
+                }
+            ]
+        },
+        {
+            "name": "Sheep Herd",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [15, 0, 55],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "sheep",
+                    "material": "sheep_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 2,
+                    "maxAmount": 20,
+                    "respawnTime": 300
+                }
+            ]
+        },
+        {
+            "name": "Cattle Herd",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [35, 0, 60],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "cattle",
+                    "material": "cattle_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 1,
+                    "maxAmount": 15,
+                    "respawnTime": 360
+                }
+            ]
+        },
+        {
+            "name": "Medicinal Plant Patch",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [60, 0, 20],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "herbs",
+                    "material": "plant_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 4,
+                    "maxAmount": 60,
+                    "respawnTime": 200
+                }
+            ]
+        },
+        {
+            "name": "Fruit Orchard",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [80, 0, 50],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "fruit_trees",
+                    "material": "orchard_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 6,
+                    "maxAmount": 70,
+                    "respawnTime": 240
+                }
+            ]
+        },
+        {
+            "name": "Crop Field",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [20, 0, 85],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "crops",
+                    "material": "field_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 7,
+                    "maxAmount": 90,
+                    "respawnTime": 180
+                }
+            ]
+        },
+        {
+            "name": "Wild Berry Bush",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [45, 0, 90],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "berry_bush",
+                    "material": "berry_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 5,
+                    "maxAmount": 50,
+                    "respawnTime": 150
+                }
+            ]
+        },
+        {
+            "name": "Mushroom Cluster",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [55, 0, 95],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "mushrooms",
+                    "material": "fungi_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 4,
+                    "maxAmount": 40,
+                    "respawnTime": 160
+                }
+            ]
+        },
+        {
+            "name": "Herbal Garden",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [70, 0, 30],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "MeshRenderer",
+                    "mesh": "common_herbs",
+                    "material": "herbal_material"
+                },
+                {
+                    "type": "SpawnManager",
+                    "resourceType": "Food",
+                    "gatherRate": 6,
+                    "maxAmount": 80,
+                    "respawnTime": 180
+                }
+            ]
+        }
+    ]
+}

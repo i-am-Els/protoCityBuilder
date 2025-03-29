@@ -63,15 +63,19 @@ class Entity:
         # Check if the entity references a prefab
         if "prefab" in entity_dict:
             prefab_name = entity_dict["prefab"]
-            prefab_path = os.path.join("assets", "prefabs", f"{prefab_name}.json")
+            prefab_path = os.path.join("assets", "prefabs", "prefab.json")
             
             if not os.path.exists(prefab_path):
-                raise ValueError(f"Prefab '{prefab_name}' not found at {prefab_path}")
+                raise ValueError(f"Prefab file not found at {prefab_path}")
             
             # Load the prefab definition
             with open(prefab_path, "r") as prefab_file:
-                prefab_dict = json.load(prefab_file)
-            
+                prefab_generator = (item for item in json.load(prefab_file).get("spawnables", []) if item["name"] == prefab_name)
+                try:
+                    prefab_dict = next(prefab_generator)  # Get the first matching dictionary from the generator
+                except StopIteration:
+                    raise ValueError(f"Prefab '{prefab_name}' not found in {prefab_path}")
+
             # Merge the prefab with the entity's overrides
             merged_dict = cls._merge_dicts(prefab_dict, entity_dict.get("overrides", {}))
             entity_dict = merged_dict
@@ -96,45 +100,6 @@ class Entity:
     def _merge_dicts(base_dict, override_dict):
         """
         Merge two dictionaries. The override_dict values take precedence.
-        
-        base_dict looks like this :
-        {
-            "name": "House",
-            "is_prefab": true,
-            "components": [
-                {
-                    "type": "Transform3D",
-                    "position": [0, 0, 0],
-                    "rotation": [0, 0, 0],
-                    "scale": [1, 1, 1]
-                },
-                {
-                    "type": "MeshRenderer",
-                    "mesh": "house_default",
-                    "material": "house_default"
-                },
-                {
-                    "type": "Collider3D",
-                    "min": [-1, -1, -1],
-                    "max": [1, 1, 1]
-                }
-            ]
-        }
-
-        while the override_dict looks like this:
-        {
-            "components": [
-                {
-                    "type": "Transform3D",
-                    "position": [30, 0, 20]
-                },
-                {
-                    "type": "MeshRenderer",
-                    "mesh": "tent",
-                    "material": "tent_material"
-                }
-            ]
-        }
 
         It is expected that the components list is the only key-value pair in override_dict and it might contain values that don't already exist in the component's array of base_dict.
         
@@ -169,5 +134,4 @@ class Entity:
         return merged
 
 
-        
-                    
+

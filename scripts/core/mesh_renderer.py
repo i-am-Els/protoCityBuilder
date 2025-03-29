@@ -20,7 +20,8 @@ class MeshRenderer(ComponentsBase):
     
     # MeshRenderer methods including render
     def render(self):
-        print(f"Rendering mesh {self.mesh} with material {self.material}")
+        # print(f"Rendering mesh {self.mesh} with material {self.material}")
+        pass
 
     def get_mesh(self):
         return self.mesh

@@ -2,7 +2,7 @@
     "scene_name": "settlement1",
     "entities": [
         {
-            "name": "Player",
+            "name": "Joshua",
             "components": [
                 {
                     "type": "Transform3D",
@@ -23,27 +23,6 @@
             ]
         },
         {
-            "name": "Ground",
-            "components": [
-                {
-                    "type": "Transform3D",
-                    "position": [0, 0, 0],
-                    "rotation": [0, 0, 0],
-                    "scale": [1, 1, 1]
-                },
-                {
-                    "type": "MeshRenderer",
-                    "mesh": "ground",
-                    "material": "ground"
-                },
-                {
-                    "type": "Collider3D",
-                    "min": [-5, -0.5, -5],
-                    "max": [5, 0.5, 5]
-                }
-            ]
-        },
-        {
             "name": "ui",
             "components": [
                 {
@@ -54,7 +33,7 @@
             ]
         },
         {
-            "name": "House1",
+            "name": "Tabernacle",
             "prefab": "House",
             "overrides": {
                 "components": [
@@ -70,7 +49,7 @@
             }
         },
         {
-            "name": "House2",
+            "name": "Leader's Dwelling",
             "prefab": "House",
             "overrides": {
                 "components": [
@@ -91,13 +70,200 @@
             }
         },
         {
-            "name": "House3",
+            "name": "Tent1",
             "prefab": "House",
             "overrides": {
                 "components": [
                     {
                         "type": "Transform3D",
                         "position": [30, 0, 20]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent2",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [40, 0, 10]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent3",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [30, 0, 20]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent4",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [70, 0, 15]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent5",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [10, 0, 60]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent6",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [65, 0, 45]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent7",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [70, 0, 30]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent8",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [40, 0, 105]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent9",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [10, 0, 70]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent10",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [60, 0, 20]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent11",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [30, 0, 40]
+                    },
+                    {
+                        "type": "MeshRenderer",
+                        "mesh": "tent",
+                        "material": "tent_material"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Tent12",
+            "prefab": "House",
+            "overrides": {
+                "components": [
+                    {
+                        "type": "Transform3D",
+                        "position": [20, 0, 100]
                     },
                     {
                         "type": "MeshRenderer",

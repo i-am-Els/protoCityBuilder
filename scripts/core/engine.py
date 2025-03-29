@@ -1,9 +1,21 @@
-import json
+import json, os
 from typing import Dict, Type
 from scripts.core.components_base import ComponentsBase
 from scripts.core.game import Game
 from scripts.core.scene import Scene
 from scripts.core.systems import System
+
+def clear_screen(next_message):
+    """
+    Clears the console screen.
+    Works for both Windows and Unix-based systems.
+    """
+    # Check the operating system and execute the appropriate command
+    if os.name == 'nt':  # For Windows
+        os.system('cls')
+    else:  # For Unix/Linux/Mac
+        os.system('clear')
+    print(next_message)
 
 
 class Engine:
@@ -53,7 +65,7 @@ class Engine:
             if system.static:
                 continue
             system.update()
-            print(f"{system._component_type.__name__} system is updated")
+            # print(f"{system._component_type.__name__} system is updated")
 
     def add_scene(self, scene, make_current=False):
         self.game.add_scene(scene, make_current)
