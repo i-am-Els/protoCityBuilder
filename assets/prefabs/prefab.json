@@ -22,6 +22,24 @@
             ]
         },
         {
+            "name": "HUD",
+            "components": [
+                {
+                    "type": "Transform3D",
+                    "position": [0, 0, 0],
+                    "rotation": [0, 0, 0],
+                    "scale": [1, 1, 1]
+                },
+                {
+                    "type": "UserInterface",
+                    "tag": "User Interface HUD",
+                    "layerIndex": 0,
+                    "display_items": {},
+                    "options": ["selection", "trade", "scout", "save", "back", "quit"]
+                }
+            ]
+        },
+        {
             "name": "Timber Grove",
             "components": [
                 {

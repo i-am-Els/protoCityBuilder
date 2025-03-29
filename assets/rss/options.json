@@ -1,0 +1,3 @@
+{
+    "options" : ["selection", "trade", "scout", "upgrade", "save", "back", "quit"]
+}

@@ -6,6 +6,8 @@ class UserInterface(CustomBehaviour):
         super().__init__(entity_name, **kwargs)
         # Set layer to the top of the stack. 32 layers possible make highest layer to be at index 31
         self.layerIndex = kwargs.get("layerIndex", 31)
+        self.displayItems = kwargs.get("displayItems", {})
+        self.options = kwargs.get("options", [])
 
     def awake(self):
         super().awake()
