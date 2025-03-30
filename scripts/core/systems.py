@@ -1,4 +1,4 @@
-from typing import Type
+from typing import List, Type
 from scripts.core.components_base import ComponentsBase
 
 class System:
@@ -6,7 +6,7 @@ class System:
     _is_enabled = True
     def __init__(self, component_type, is_static: bool=False):
         self._component_type: Type[ComponentsBase] = component_type
-        self.__components = []
+        self.__components: List[ComponentsBase] = []
         self.__static = is_static
         print(f"{self._component_type.__name__} System started")
 

@@ -12,7 +12,6 @@ from scripts.game.user_interface import UserInterface
 class WorldOfTextCraft(Engine):
     def __init__(self, name):
         super().__init__(name=name)
-        clear_screen("Welcome to World of TextCraft")
         # Register game defined custom components with component registry so that a system is instantiated for them.
         ComponentsRegistry.add_to_registry_from_dict({"UserInterface": UserInterface, "SpawnManager": SpawnManager})
         # Add required systems through 
@@ -20,9 +19,9 @@ class WorldOfTextCraft(Engine):
         # Add required scenes from the scenes json and in the same process load all entities
         self.load_scene_from_json(scene_json_file="assets/scenes/settlement1.json", make_current=True)
 
-
     def awake(self):
-        clear_screen("Welcome to World of TextCraft")
+        self.ui = self.get_ui()
+        # self.ui.ui_node.draw_ui()
         super().awake()
 
     def start(self):
@@ -33,6 +32,7 @@ class WorldOfTextCraft(Engine):
 
     def update(self):
         super().update()
+        self.ui.ui_node.draw_ui()
 
 
 app = WorldOfTextCraft(name="World of TextCraft")

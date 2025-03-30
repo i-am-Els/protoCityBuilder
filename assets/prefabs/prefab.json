@@ -35,7 +35,7 @@
                     "tag": "User Interface HUD",
                     "layerIndex": 0,
                     "display_items": {},
-                    "options": ["selection", "trade", "scout", "save", "back", "quit"]
+                    "options": []
                 }
             ]
         },

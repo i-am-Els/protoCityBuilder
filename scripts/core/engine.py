@@ -1,5 +1,6 @@
 import json, os
 from typing import Dict, Type
+from scripts.core.accessor import Accessor
 from scripts.core.components_base import ComponentsBase
 from scripts.core.game import Game
 from scripts.core.scene import Scene
@@ -26,6 +27,8 @@ class Engine:
         self.set_current_scene(scene=self.game.get_scene(name="Main"))
         self.is_running = True
         self.game._set_quit_callback(self.quit)
+        self.ui = None
+        Accessor.add_accessor("Engine", self)
         print("Engine started")
 
     def add_systems_from_classes(self, component_classes: Dict[Type[ComponentsBase], bool]):
@@ -43,6 +46,12 @@ class Engine:
             self.update()
         self.on_destroy()
 
+    def set_ui(self, value):
+        self.ui = value
+
+    def get_ui(self):
+        return self.ui
+
     def awake(self):
         for system in self.game.get_systems().values():
             system.awake()
@@ -55,7 +64,7 @@ class Engine:
         for system in self.game.get_systems().values():
             system.on_destroy()
         self.is_running = False
-        print(f"Engine {self.name} destroyed")
+        print(f"{self.name} destroyed")
 
     def quit(self):
         self.is_running = False
