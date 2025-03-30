@@ -6,7 +6,7 @@ class AboutUI(UINode):
         super().__init__("How to Play/About", parent, options)
 
     def draw_ui(self, message=None):
-        _message = f"Dear Warrior,\nThis is World of TextCraft, you are on strict business\n to build an army and a kingdom, lead men to war and \nprotect the people with all you've got, the tales of you victory\n will forever be told.\n\nYour faithful general.\nCaleb of Judah."
+        _message = f"Dear Warrior,\nThis is World of TextCraft, you are on strict business to \nbuild an army and a kingdom, lead men to war and protect \nthe people with all you've got, the tales of you victory \nwill forever be told.\n\nYour faithful General.\nCaleb of Judah."
         super().draw_ui(_message)
         print(f"Go Back[b] | Quit[q]")
         self.process_input(["b", "q"])

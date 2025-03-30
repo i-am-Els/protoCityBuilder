@@ -20,7 +20,7 @@ class UINode(Node):
             print(f"#{1}. {self.options[0].display_text}\n")
             return
         if option_count == 0:
-            print(f"No Save Profile yet, create a new one.")
+            print(f"No Options available yet.")
             return
         for i in range(0, option_count, 2):
             if i + 1 >= option_count:
