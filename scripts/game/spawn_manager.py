@@ -26,6 +26,7 @@ class SpawnManager(CustomBehaviour):
     
     def update(self, **kwargs):
         super().update(**kwargs)
+        
 
     @classmethod
     def make_from_dict(cls, entity_name, component_dict):
